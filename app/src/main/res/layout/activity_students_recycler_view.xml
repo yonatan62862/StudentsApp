@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudentsRecyclerViewActivity">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/students_list_activity_recycler_view"
         android:layout_width="409dp"
@@ -15,4 +16,28 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/AddstudentBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:textSize="24sp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="409dp"
+        app:titleTextColor="@android:color/white"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="3dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,19 +1,35 @@
 package com.mobile.studentsapp.model
 
 class Model private constructor() {
-    val students: MutableList<Student> = ArrayList()
-    companion object {
-        val shared = Model()
-    }
+
+    val students: MutableList<Student> = mutableListOf()
+
     init {
-        for (i in 0..20) {
-            val student = Student(
-                name = "Name $i",
-                id = "Student ID: $i",
-                avatarUrl = "",
-                isChecked = false
+        for (i in 1..10) {
+            students.add(
+                Student(
+                    name = "Student $i",
+                    id = "ID-$i",
+                    phone = "054-123456$i",
+                    address = "Address $i",
+                    avatarUrl = "",
+                    isChecked = i % 2 == 0
+                )
             )
-            students.add(student)
         }
+    }
+
+    companion object {
+        val shared: Model by lazy { Model() }
+        val instance: Model
+            get() = shared
+    }
+
+    fun addStudent(student: Student) {
+        students.add(student)
+    }
+
+    fun removeStudent(student: Student) {
+        students.remove(student)
     }
 }
