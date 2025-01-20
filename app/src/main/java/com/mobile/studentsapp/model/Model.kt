@@ -9,11 +9,11 @@ class Model private constructor() {
             students.add(
                 Student(
                     name = "Student $i",
-                    id = "ID-$i",
+                    id = "20922233$i",
                     phone = "054-123456$i",
                     address = "Address $i",
                     avatarUrl = "",
-                    isChecked = i % 2 == 0
+                    isChecked = false
                 )
             )
         }
