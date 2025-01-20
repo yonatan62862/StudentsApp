@@ -30,6 +30,7 @@ class StudentDetailsActivity : AppCompatActivity() {
         val studentName: TextView = findViewById(R.id.name_text_view)
         val studentId: TextView = findViewById(R.id.id_text_view)
         val studentNumber: TextView = findViewById(R.id.number_text_view)
+        val studentAddress: TextView = findViewById(R.id.address_text_view)
         val editButton: Button = findViewById(R.id.edit_button)
         val cancelButton: Button = findViewById(R.id.cancel_button)
         val deleteButton: Button = findViewById(R.id.delete_button2)
@@ -42,6 +43,7 @@ class StudentDetailsActivity : AppCompatActivity() {
         studentName.text = student?.name
         studentId.text = student?.id
         studentNumber.text = student?.phone
+        studentAddress.text = student?.address
         checkBox.isChecked = student?.isChecked ?: false
 
         checkBox.setOnCheckedChangeListener { _, isChecked ->
@@ -53,6 +55,7 @@ class StudentDetailsActivity : AppCompatActivity() {
             intent.putExtra("student_name", studentName.text.toString())
             intent.putExtra("student_id", studentId.text.toString())
             intent.putExtra("student_phone", studentNumber.text.toString())
+            intent.putExtra("student_address", studentAddress.text.toString())
             intent.putExtra("student_isChecked", checkBox.isChecked)
             startActivityForResult(intent, EDIT_REQUEST_CODE)
         }
@@ -80,6 +83,7 @@ class StudentDetailsActivity : AppCompatActivity() {
             val updatedName = data?.getStringExtra("updated_name")
             val updatedId = data?.getStringExtra("updated_id")
             val updatedPhone = data?.getStringExtra("updated_phone")
+            val updatedAddress = data?.getStringExtra("updated_address")
             val updatedIsChecked = data?.getBooleanExtra("updated_isChecked", false)
 
             val student = Model.shared.students.find { it.id == intent.getStringExtra("id") }
@@ -87,12 +91,14 @@ class StudentDetailsActivity : AppCompatActivity() {
                 student.name = updatedName ?: student.name
                 student.id = updatedId ?: student.id
                 student.phone = updatedPhone ?: student.phone
+                student.address = updatedAddress ?: student.address
                 student.isChecked = updatedIsChecked ?: student.isChecked
             }
 
             findViewById<TextView>(R.id.name_text_view).text = updatedName
             findViewById<TextView>(R.id.id_text_view).text = updatedId
             findViewById<TextView>(R.id.number_text_view).text = updatedPhone
+            findViewById<TextView>(R.id.address_text_view).text = updatedAddress
             findViewById<CheckBox>(R.id.details_check_box).isChecked = updatedIsChecked ?: false
         }
     }

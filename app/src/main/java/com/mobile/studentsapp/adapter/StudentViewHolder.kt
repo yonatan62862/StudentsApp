@@ -23,7 +23,6 @@ class StudentViewHolder(
         nameTextView = itemView.findViewById(R.id.student_row_name_text_view)
         idTextView = itemView.findViewById(R.id.student_row_id_text_view)
         checkBox = itemView.findViewById(R.id.student_row_check_box)
-        numberTextView = itemView.findViewById(R.id.student_row_number_text_view)
 
         checkBox?.apply {
             setOnClickListener { view ->
