@@ -5,15 +5,19 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.textfield.TextInputEditText
 import com.mobile.studentsapp.model.Model
 
 
-class EditStudentActivity : AppCompatActivity() {
+class EditStudentActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_student)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setupToolbar(toolbar, title = "Edit Student", showUpButton = true)
 
         val studentId = intent.getStringExtra("student_id")
         val studentName = intent.getStringExtra("student_name")
@@ -24,7 +28,7 @@ class EditStudentActivity : AppCompatActivity() {
         val nameEditText: TextInputEditText = findViewById(R.id.NameEditText)
         val idEditText: TextInputEditText = findViewById(R.id.IDEditText)
         val phoneEditText: TextInputEditText = findViewById(R.id.PhoneEditText)
-        val addressEditText: TextInputEditText = findViewById(R.id.addressEditText)
+        val addressEditText: TextInputEditText = findViewById(R.id.AddressEditText)
         val checkBox: MaterialCheckBox = findViewById(R.id.checkBox)
         val updateButton: Button = findViewById(R.id.UpdateStudentBTN)
         val cancelButton: Button = findViewById(R.id.CancelBTN)

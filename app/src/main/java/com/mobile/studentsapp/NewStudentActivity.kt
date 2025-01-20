@@ -4,16 +4,20 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.mobile.studentsapp.model.Model
 import com.mobile.studentsapp.model.Student
 
-class NewStudentActivity : AppCompatActivity() {
+class NewStudentActivity : BaseActivity() {
 
     private val repository = Model.instance
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_student)
+
+        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        setupToolbar(toolbar, title = "Add New Student", showUpButton = true)
 
         val nameEditText: EditText = findViewById(R.id.newStudentName)
         val idEditText: EditText = findViewById(R.id.newStudentId)

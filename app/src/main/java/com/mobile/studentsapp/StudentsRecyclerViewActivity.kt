@@ -20,7 +20,7 @@ interface OnItemClickListener {
     fun onItemClick(student: Student?)
 }
 
-class StudentsRecyclerViewActivity : AppCompatActivity() {
+class StudentsRecyclerViewActivity : BaseActivity() {
 
     private var students: MutableList<Student>? = null
     var adapter: StudentsRecyclerAdapter? = null
@@ -36,10 +36,13 @@ class StudentsRecyclerViewActivity : AppCompatActivity() {
         }
 
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        setupToolbar(toolbar, title = "Students List")
+
         students = Model.shared.students
+
         val recyclerView: RecyclerView = findViewById(R.id.students_list_activity_recycler_view)
         recyclerView.setHasFixedSize(true)
+
         val addStudentButton: Button = findViewById(R.id.AddstudentBTN)
 
         val layoutManager = LinearLayoutManager(this)
