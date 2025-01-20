@@ -5,7 +5,7 @@ data class Student(
     var name: String,
     var id: String,
     var phone: String,
-    val address: String,
+    var address: String,
     val avatarUrl: String,
     var isChecked: Boolean
 )
