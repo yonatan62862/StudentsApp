@@ -39,7 +39,6 @@ class StudentDetailsActivity : AppCompatActivity() {
         val studentIdString = intent.getStringExtra("id")
         val student = Model.shared.students.find { it.id == studentIdString }
 
-        // Set initial data
         studentName.text = student?.name
         studentId.text = student?.id
         studentNumber.text = student?.phone

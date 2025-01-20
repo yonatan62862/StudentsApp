@@ -15,14 +15,12 @@ class EditStudentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_student)
 
-        // Retrieve data from the intent
         val studentId = intent.getStringExtra("student_id")
         val studentName = intent.getStringExtra("student_name")
         val studentPhone = intent.getStringExtra("student_phone")
         val studentAddress = intent.getStringExtra("student_address")
         val studentIsChecked = intent.getBooleanExtra("student_isChecked", false)
 
-        // Link UI elements
         val nameEditText: TextInputEditText = findViewById(R.id.NameEditText)
         val idEditText: TextInputEditText = findViewById(R.id.IDEditText)
         val phoneEditText: TextInputEditText = findViewById(R.id.PhoneEditText)
@@ -31,14 +29,12 @@ class EditStudentActivity : AppCompatActivity() {
         val updateButton: Button = findViewById(R.id.UpdateStudentBTN)
         val cancelButton: Button = findViewById(R.id.CancelBTN)
 
-        // Pre-fill fields
         nameEditText.setText(studentName)
         idEditText.setText(studentId)
         phoneEditText.setText(studentPhone)
         addressEditText.setText(studentAddress)
         checkBox.isChecked = studentIsChecked
 
-        // Handle Update button click
         updateButton.setOnClickListener {
             val updatedName = nameEditText.text.toString()
             val updatedId = idEditText.text.toString()
@@ -51,7 +47,6 @@ class EditStudentActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Update the shared model
             val student = Model.shared.students.find { it.id == studentId }
             if (student != null) {
                 student.name = updatedName
@@ -61,7 +56,6 @@ class EditStudentActivity : AppCompatActivity() {
                 student.isChecked = isChecked
             }
 
-            // Pass updated data back
             val resultIntent = Intent()
             resultIntent.putExtra("updated_name", updatedName)
             resultIntent.putExtra("updated_id", updatedId)
@@ -73,7 +67,6 @@ class EditStudentActivity : AppCompatActivity() {
             finish()
         }
 
-        // Handle Cancel button click
         cancelButton.setOnClickListener {
             finish()
         }
